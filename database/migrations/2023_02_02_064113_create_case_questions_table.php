@@ -13,14 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('case_records', function (Blueprint $table) {
+        Schema::create('case_questions', function (Blueprint $table) {
             $table->id();
-
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('phone');
             
+            // For yes-no question
+            $table->string('question'); 
+            $table->string('answer'); 
+            $table->string('answer_long_form'); 
+            $table->json('metadata');
+
+            $table->unsignedBigInteger('case_record_id');
+            $table->foreign('case_record_id')->references('id')->on('case_records');
+
             $table->timestamps();
         });
     }
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('case_records');
+        Schema::dropIfExists('case_questions');
     }
 };
