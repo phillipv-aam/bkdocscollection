@@ -21,6 +21,8 @@ class LawFirmResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Admin Settings';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -34,6 +36,7 @@ class LawFirmResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
+                TextColumn::make('users_count')->counts('users')->label('Active Users')
             ])
             ->filters([
                 //
