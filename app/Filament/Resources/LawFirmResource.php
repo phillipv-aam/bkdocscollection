@@ -39,7 +39,7 @@ class LawFirmResource extends Resource
                 TextColumn::make('users_count')->counts('users')->label('Active Users')
             ])
             ->filters([
-                //
+                //w
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
